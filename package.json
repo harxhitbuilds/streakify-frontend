@@ -6,14 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "format": "prettier --write \"**/*.{ts,tsx,md,js,jsx,json,mdx,css,scss}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,js,jsx,json,mdx,css,scss}\"",
+    "lint": "eslint",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
   },
   "dependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.563.0",
     "motion": "^12.31.1",
     "next": "16.1.6",
+    "next-themes": "^0.4.6",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
@@ -26,6 +33,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "husky": "^9.1.7",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5"
