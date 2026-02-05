@@ -20,6 +20,6 @@ export const navbarConfig = {
   ],
   button: {
     label: "Get Started",
-    href: "#",
+    href: "/auth",
   },
 };

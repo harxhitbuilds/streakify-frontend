@@ -1,0 +1,39 @@
+import { IconChevronLeft } from "@tabler/icons-react";
+import Link from "next/link";
+
+import ModifiedBtn from "@/components/global/btn";
+import { Separator } from "@/components/ui/separator";
+import { authConfig } from "@/config/auth";
+
+export default function AuthPage() {
+  return (
+    <div className="bg-background relative flex h-screen w-full items-center justify-center">
+      <Link
+        href="/"
+        className="text-muted-foreground absolute top-8 left-8 flex items-center bg-transparent text-xs hover:bg-transparent"
+      >
+        <IconChevronLeft size={14} />
+        <p>Home</p>
+      </Link>
+
+      <div className="border-border flex h-full max-w-md min-w-[320px] flex-col items-center justify-center border-x px-8 py-10 shadow-lg">
+        <Separator className="absolute top-50" />
+        <h1 className="text-foreground mt-4 mb-2 text-center text-3xl font-bold md:text-2xl">
+          {authConfig.heading}
+        </h1>
+        <p className="text-muted-foreground mt-4 max-w-xl px-4 text-center text-xs leading-6 md:text-sm">
+          {authConfig.para}
+        </p>
+        <div className="mt-8 mb-8">
+          <ModifiedBtn label={authConfig.button.label} className="w-full">
+            <span className="flex items-center justify-center gap-4">
+              {authConfig.button.icon}
+              {authConfig.button.label}
+            </span>
+          </ModifiedBtn>
+        </div>
+        <Separator className="absolute bottom-50" />
+      </div>
+    </div>
+  );
+}

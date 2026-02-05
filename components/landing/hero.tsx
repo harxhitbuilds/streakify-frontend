@@ -1,4 +1,5 @@
 import { IconArrowRightDashed } from "@tabler/icons-react";
+import Link from "next/link";
 
 import { heroConfig } from "@/config/landing";
 
@@ -30,18 +31,31 @@ export default function Hero() {
           </p>
         </div>
         <div className="mx-auto mt-8 flex max-w-xs flex-col gap-6 md:flex-row md:justify-center">
-          {heroConfig.cta.map((cta, i) => (
-            <ModifiedBtn
-              key={cta.label}
-              label={cta.label}
-              className="mx-auto flex w-full items-center gap-2 rounded-xs px-4 py-3 text-sm sm:w-auto sm:max-w-none"
+          <ModifiedBtn
+            label={heroConfig.cta[0].label}
+            className="mx-auto flex w-full items-center gap-2 rounded-xs px-4 py-3 text-sm sm:w-auto sm:max-w-none"
+          >
+            <a
+              href={heroConfig.cta[0].href}
+              target="_blank"
+              className="flex items-center gap-4"
             >
-              <a href={cta.href} className="flex items-center gap-4">
-                {cta.icon}
-                {cta.label}
-              </a>
-            </ModifiedBtn>
-          ))}
+              {heroConfig.cta[0].icon}
+              {heroConfig.cta[0].label}
+            </a>
+          </ModifiedBtn>
+          <ModifiedBtn
+            label={heroConfig.cta[1].label}
+            className="mx-auto flex w-full items-center gap-2 rounded-xs px-4 py-3 text-sm sm:w-auto sm:max-w-none"
+          >
+            <Link
+              href={heroConfig.cta[1].href}
+              className="flex items-center gap-4"
+            >
+              {heroConfig.cta[1].icon}
+              {heroConfig.cta[1].label}
+            </Link>
+          </ModifiedBtn>
         </div>
       </section>
     </Container>
