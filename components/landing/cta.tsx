@@ -1,4 +1,4 @@
-import { ctaConfig } from "@/config/landing";
+import { ctaConfig } from "@/constants/landing";
 
 import ModifiedBtn from "../global/btn";
 import Container from "../global/container";

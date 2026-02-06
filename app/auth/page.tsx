@@ -1,11 +1,34 @@
+"use client";
 import { IconChevronLeft } from "@tabler/icons-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { useEffect } from "react";
 
 import ModifiedBtn from "@/components/global/btn";
 import { Separator } from "@/components/ui/separator";
-import { authConfig } from "@/config/auth";
+import { Spinner } from "@/components/ui/spinner";
+import { authConfig } from "@/constants/auth";
+import { useAuthStore } from "@/stores/auth";
 
 export default function AuthPage() {
+  const { user, loading, login } = useAuthStore();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.replace("/home");
+    }
+  }, [user, loading, router]);
+
+  if (loading) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center">
+        <Spinner />
+      </div>
+    );
+  }
+
   return (
     <div className="bg-background relative flex h-screen w-full items-center justify-center">
       <Link
@@ -25,7 +48,11 @@ export default function AuthPage() {
           {authConfig.para}
         </p>
         <div className="mt-8 mb-8">
-          <ModifiedBtn label={authConfig.button.label} className="w-full">
+          <ModifiedBtn
+            label={authConfig.button.label}
+            className="w-full"
+            onClick={login}
+          >
             <span className="flex items-center justify-center gap-4">
               {authConfig.button.icon}
               {authConfig.button.label}

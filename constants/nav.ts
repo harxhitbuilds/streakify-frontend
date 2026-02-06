@@ -18,8 +18,14 @@ export const navbarConfig = {
       href: "#",
     },
   ],
-  button: {
-    label: "Get Started",
-    href: "/auth",
-  },
+  button: [
+    {
+      label: "Get Started",
+      href: "/auth",
+    },
+    {
+      label: "Home",
+      href: "/home",
+    },
+  ],
 };

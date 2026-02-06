@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { faqConfig } from "@/config/landing";
+import { faqConfig } from "@/constants/landing";
 
 import Container from "../global/container";
 import SectionHeading from "../global/section-heading";

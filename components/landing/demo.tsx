@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { demoConfig } from "@/config/landing";
+import { demoConfig } from "@/constants/landing";
 
 import Container from "../global/container";
 import SectionHeading from "../global/section-heading";

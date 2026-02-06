@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
 
+import { AuthProvider } from "@/context/auth-provider";
 import ThemeProvider from "@/providers/theme-provider";
 
 import "./globals.css";
@@ -28,18 +29,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <body
-          className={`${spaceGrotesk.variable} ${manrope.variable} bg-background text-foreground antialiased`}
+      <AuthProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
-          {children}
-        </body>
-      </ThemeProvider>
+          <body
+            className={`${spaceGrotesk.variable} ${manrope.variable} bg-background text-foreground antialiased`}
+          >
+            {children}
+          </body>
+        </ThemeProvider>
+      </AuthProvider>
     </html>
   );
 }

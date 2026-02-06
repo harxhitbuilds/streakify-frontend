@@ -1,7 +1,7 @@
 import { IconArrowRightDashed } from "@tabler/icons-react";
 import Link from "next/link";
 
-import { heroConfig } from "@/config/landing";
+import { heroConfig } from "@/constants/landing";
 
 import ModifiedBtn from "../global/btn";
 import Container from "../global/container";

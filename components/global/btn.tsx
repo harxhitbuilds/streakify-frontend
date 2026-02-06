@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -8,12 +8,14 @@ interface ModifiedBtnProps extends ButtonProps {
   label?: string;
   className?: string;
   children?: ReactNode;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function ModifiedBtn({
   label,
   className,
   children,
+  onClick,
   ...props
 }: ModifiedBtnProps) {
   return (
@@ -24,9 +26,10 @@ export default function ModifiedBtn({
       <div className="absolute right-0 bottom-0 h-1 w-1 bg-green-500" />
       <Button
         className={cn(
-          "text-foreground border-border relative border bg-transparent hover:bg-transparent",
+          "text-foreground border-border relative min-w-20 border bg-transparent hover:bg-transparent",
           className,
         )}
+        onClick={onClick}
         {...props}
       >
         {children ?? label}

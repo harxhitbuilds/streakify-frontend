@@ -5,7 +5,7 @@ import {
   IconCheck,
 } from "@tabler/icons-react";
 
-import { footerConfig } from "@/config/footer";
+import { footerConfig } from "@/constants/footer";
 
 import Container from "../global/container";
 import { Badge } from "../ui/badge";

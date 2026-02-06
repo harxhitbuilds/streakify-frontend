@@ -6,8 +6,9 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { navbarConfig } from "@/config/nav";
+import { navbarConfig } from "@/constants/nav";
 
+import { AuthButton } from "../auth/auth-button";
 import ModifiedBtn from "../global/btn";
 import Container from "../global/container";
 import ModeToggleButton from "../theme/mode-toggle-btn";
@@ -34,14 +35,7 @@ export default function Navbar() {
           </div>
           <div className="hidden items-center gap-4 md:flex">
             <ModeToggleButton />
-            <Link href={navbarConfig.button.href}>
-              <ModifiedBtn
-                label={navbarConfig.button.label}
-                className="cursor-pointer rounded-xs px-4 py-4"
-              >
-                {navbarConfig.button.label}
-              </ModifiedBtn>
-            </Link>
+            <AuthButton />
           </div>
 
           <div className="flex items-center md:hidden">
