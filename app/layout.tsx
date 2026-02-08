@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
 
+import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/context/auth-provider";
 import ThemeProvider from "@/providers/theme-provider";
 
@@ -28,21 +29,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <AuthProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${spaceGrotesk.variable} ${manrope.variable} bg-background text-foreground antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <body
-            className={`${spaceGrotesk.variable} ${manrope.variable} bg-background text-foreground antialiased`}
-          >
-            {children}
-          </body>
+          <AuthProvider>
+            <Toaster position="top-center" />
+            <main>{children}</main>
+          </AuthProvider>
         </ThemeProvider>
-      </AuthProvider>
+      </body>
     </html>
   );
 }

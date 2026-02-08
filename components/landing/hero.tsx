@@ -6,8 +6,6 @@ import { heroConfig } from "@/constants/landing";
 import ModifiedBtn from "../global/btn";
 import Container from "../global/container";
 import SectionHeading from "../global/section-heading";
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
 
 export default function Hero() {
   return (

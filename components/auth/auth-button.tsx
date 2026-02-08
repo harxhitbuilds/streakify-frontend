@@ -7,9 +7,9 @@ import ModifiedBtn from "../global/btn";
 import { Spinner } from "../ui/spinner";
 
 export function AuthButton() {
-  const { user, loading, login } = useAuthStore();
+  const { user, checkingAuth } = useAuthStore();
 
-  if (loading)
+  if (checkingAuth)
     return (
       <ModifiedBtn
         label={navbarConfig.button[0].label}

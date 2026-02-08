@@ -2,7 +2,6 @@ import { ctaConfig } from "@/constants/landing";
 
 import ModifiedBtn from "../global/btn";
 import Container from "../global/container";
-import { Button } from "../ui/button";
 
 export default function CTA() {
   return (

@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { featuresConfig } from "@/constants/landing";
 
 import Container from "../global/container";
@@ -18,7 +16,7 @@ export default function Features() {
             {featuresConfig.para}
           </p>
         </div>
-        <div className="divide-border grid w-full grid-cols-1 gap-8 divide-y md:grid-cols-3 md:divide-x">
+        <div className="divide-border grid w-full grid-cols-1 gap-8 divide-y md:grid-cols-3 md:divide-x md:divide-y-0">
           {featuresConfig.features.map((feature) => (
             <div
               key={feature.title}

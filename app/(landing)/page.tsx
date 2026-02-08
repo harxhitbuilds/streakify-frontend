@@ -4,21 +4,24 @@ import Demo from "@/components/landing/demo";
 import FAQ from "@/components/landing/faq";
 import Features from "@/components/landing/features";
 import Hero from "@/components/landing/hero";
+import MsgFromDevelopers from "@/components/landing/msg-from-developers";
 import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   return (
     <Container>
       <Hero />
-      <Separator className="h-px bg-neutral-200 dark:bg-neutral-800" />
+      <Separator className="bg-border dark:bg-border h-px" />
       <Demo />
-      <Separator className="h-px bg-neutral-200 dark:bg-neutral-800" />
+      <Separator className="bg-border dark:bg-border h-px" />
       <Features />
-      <Separator className="h-px bg-neutral-200 dark:bg-neutral-800" />
+      <Separator className="bg-border dark:bg-border h-px" />
       <FAQ />
-      <Separator className="h-px bg-neutral-200 dark:bg-neutral-800" />
+      <Separator className="bg-border dark:bg-border h-px" />
+      <MsgFromDevelopers />
+      <Separator className="bg-border dark:bg-border h-px" />
       <CTA />
-      <Separator className="h-px bg-neutral-200 dark:bg-neutral-800" />
+      <Separator className="bg-border dark:bg-border h-px" />
     </Container>
   );
 }

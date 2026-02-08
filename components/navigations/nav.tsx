@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { navbarConfig } from "@/constants/nav";
 
 import { AuthButton } from "../auth/auth-button";
-import ModifiedBtn from "../global/btn";
 import Container from "../global/container";
 import ModeToggleButton from "../theme/mode-toggle-btn";
 
@@ -51,13 +50,13 @@ function MobileNav() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <button
-        className="flex items-center justify-center rounded-lg transition md:hidden"
+      <Button
+        className="flex items-center justify-center rounded-lg bg-transparent transition hover:bg-transparent md:hidden"
         aria-label="Open menu"
         onClick={() => setOpen(true)}
       >
         <IconMenu2 className="text-foreground h-5 w-5" />
-      </button>
+      </Button>
 
       <AnimatePresence>
         {open && (
@@ -69,34 +68,27 @@ function MobileNav() {
             className="bg-background fixed inset-0 z-50 flex h-screen flex-col"
           >
             <div className="flex justify-end p-6">
-              <button
-                className="hover:bg-accent rounded-lg p-2 transition"
+              <Button
+                className="rounded-lg bg-transparent p-2 transition hover:bg-transparent"
                 aria-label="Close menu"
                 onClick={() => setOpen(false)}
               >
                 <IconX className="text-foreground h-7 w-7" />
-              </button>
+              </Button>
             </div>
 
             <div className="flex flex-1 flex-col items-center justify-center gap-8">
-              {navbarConfig.navItems.map((item) => (
+              {navbarConfig.navItems.map((item, index) => (
                 <Link
-                  key={item.href}
+                  key={index}
                   href={item.href}
-                  className="text-foreground hover:text-primary text-3xl font-bold transition"
+                  className="text-foreground hover:text-primary text-lg font-bold transition"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-              <Link
-                href={navbarConfig.button.href}
-                onClick={() => setOpen(false)}
-              >
-                <Button className="bg-foreground text-background hover:bg-primary mt-6 w-48 rounded-xl text-lg font-semibold shadow transition">
-                  {navbarConfig.button.label}
-                </Button>
-              </Link>
+              <AuthButton />
               <div className="mt-8">
                 <ModeToggleButton />
               </div>

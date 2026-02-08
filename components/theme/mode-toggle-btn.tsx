@@ -1,6 +1,6 @@
 "use client";
 import { SunMoonIcon } from "lucide-react";
-import { motion, scale, useAnimation } from "motion/react";
+import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 
 import { useEffect, useState } from "react";

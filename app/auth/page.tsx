@@ -12,16 +12,16 @@ import { authConfig } from "@/constants/auth";
 import { useAuthStore } from "@/stores/auth";
 
 export default function AuthPage() {
-  const { user, loading, login } = useAuthStore();
+  const { user, checkingAuth, login, loading } = useAuthStore();
   const router = useRouter();
 
   useEffect(() => {
-    if (!loading && user) {
+    if (!checkingAuth && user) {
       router.replace("/home");
     }
-  }, [user, loading, router]);
+  }, [user, checkingAuth, router]);
 
-  if (loading) {
+  if (checkingAuth) {
     return (
       <div className="flex h-screen w-full items-center justify-center">
         <Spinner />
@@ -33,7 +33,7 @@ export default function AuthPage() {
     <div className="bg-background relative flex h-screen w-full items-center justify-center">
       <Link
         href="/"
-        className="text-muted-foreground absolute top-8 left-8 flex items-center bg-transparent text-xs hover:bg-transparent"
+        className="text-muted-foreground absolute top-8 left-12 flex items-center bg-transparent text-xs hover:bg-transparent"
       >
         <IconChevronLeft size={14} />
         <p>Home</p>
@@ -50,11 +50,11 @@ export default function AuthPage() {
         <div className="mt-8 mb-8">
           <ModifiedBtn
             label={authConfig.button.label}
-            className="w-full"
+            className="w-full cursor-pointer"
             onClick={login}
           >
             <span className="flex items-center justify-center gap-4">
-              {authConfig.button.icon}
+              {loading ? <Spinner /> : authConfig.button.icon}
               {authConfig.button.label}
             </span>
           </ModifiedBtn>
