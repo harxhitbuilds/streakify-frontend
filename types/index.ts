@@ -33,6 +33,8 @@ export type UserStore = {
   user: User | null;
   hasGithubToken: boolean;
   loading: boolean;
+  updatingSettings: boolean;
+  updatingGithubToken: boolean;
   error: string | null;
   githubStatus: GithubStatus | null;
   fetchUser: () => Promise<void>;
@@ -64,6 +66,7 @@ export type ContributionsStore = {
   todayStatus: { date: string; hasContributed: boolean } | null;
   streakStats: StreakStats | null;
   loading: boolean;
+  syncing: boolean;
   error: string | null;
   fetchContributions: () => Promise<void>;
   fetchTodayStatus: () => Promise<void>;
@@ -82,6 +85,8 @@ export type NotificationLog = {
 export type NotificationsStore = {
   notificationHistory: NotificationLog[];
   loading: boolean;
+  sendingTestTelegramMessage: boolean;
+  sendingEmail: boolean;
   error: string | null;
   testEmailResult: string | null;
   reminderResult: string | null;

@@ -28,23 +28,25 @@ function getErrorMessage(error: unknown) {
 export const useNotificationsStore = create<NotificationsStore>((set) => ({
   notificationHistory: [],
   loading: false,
+  sendingTestTelegramMessage: false,
+  sendingEmail: false,
   error: null,
   testEmailResult: null,
   reminderResult: null,
   telegramResult: null,
 
   sendTestEmail: async (email: string) => {
-    set({ loading: true, error: null, testEmailResult: null });
+    set({ sendingEmail: true, error: null, testEmailResult: null });
     try {
       const { data } = await axios.post("/api/notifications/test-email", {
         email,
       });
-      set({ testEmailResult: data.message, loading: false });
+      set({ testEmailResult: data.message, sendingEmail: false });
       toast.success("Test email sent successfully.");
     } catch (err: unknown) {
       set({
         error: getErrorMessage(err) || "Failed to send test email",
-        loading: false,
+        sendingEmail: false,
       });
       toast.error(getErrorMessage(err) || "Failed to send test email");
     }
@@ -68,17 +70,21 @@ export const useNotificationsStore = create<NotificationsStore>((set) => ({
   },
 
   sendTelegramTest: async (message) => {
-    set({ loading: true, error: null, telegramResult: null });
+    set({
+      sendingTestTelegramMessage: true,
+      error: null,
+      telegramResult: null,
+    });
     try {
       const { data } = await axios.post("/api/notifications/send-telegram", {
         message,
       });
-      set({ telegramResult: data.message, loading: false });
+      set({ telegramResult: data.message, sendingTestTelegramMessage: false });
       toast.success("Telegram message sent successfully.");
     } catch (err: unknown) {
       set({
         error: getErrorMessage(err) || "Failed to send Telegram message",
-        loading: false,
+        sendingTestTelegramMessage: false,
       });
       toast.error(getErrorMessage(err) || "Failed to send Telegram message");
     }

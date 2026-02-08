@@ -30,6 +30,7 @@ export const useContributionsStore = create<ContributionsStore>((set, get) => ({
   todayStatus: null,
   streakStats: null,
   loading: false,
+  syncing: false,
   error: null,
 
   fetchContributions: async () => {
@@ -76,15 +77,15 @@ export const useContributionsStore = create<ContributionsStore>((set, get) => ({
   },
 
   syncContributions: async () => {
-    set({ loading: true, error: null });
+    set({ syncing: true, error: null });
     try {
       await axios.post("/api/contributions/sync");
       await get().fetchContributions();
-      set({ loading: false });
+      set({ syncing: false });
     } catch (err: unknown) {
       set({
         error: getErrorMessage(err) || "Failed to sync contributions",
-        loading: false,
+        syncing: false,
       });
     }
   },
