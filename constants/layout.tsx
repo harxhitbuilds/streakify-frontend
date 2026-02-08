@@ -9,6 +9,10 @@ export const user = {
   profile: "https://avatars.githubusercontent.com/u/124599?v=4",
   username: "@harxhitbuilds",
   name: "Harshit Parmar",
+  email: "parmarharshit441@gmail.com",
+  check_time: "18:00",
+  timezone: "UTC",
+  telegram_chat_id: false,
 };
 
 export const sidebarItems = [
@@ -19,7 +23,7 @@ export const sidebarItems = [
   },
   {
     label: "Settings",
-    href: "/settings",
+    href: "/home/settings",
     icon: IconSettings,
   },
 ];

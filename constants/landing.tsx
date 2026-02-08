@@ -2,7 +2,6 @@ import {
   IconArrowRightCircle,
   IconBellBolt,
   IconBrandGithubFilled,
-  IconBrandTabler,
   IconUserBolt,
 } from "@tabler/icons-react";
 
@@ -108,4 +107,24 @@ export const faqConfig = {
 export const ctaConfig = {
   heading: "Ready to keep your streak alive?",
   cta: { label: "Start Saving Your Streaks", href: "/auth" },
+};
+
+export const developersMsg = {
+  heading: "Message from Developers",
+  para: "Streakify was built to make sure you never lose your streak and always feel encouraged to keep pushing forward. ",
+  developers: [
+    {
+      name: "Harshit",
+      twitter: "@harxhitbuilds",
+      msg: "We're excited to help you stay consistent and never lose your GitHub streak again! Your feedback helps us improve Streakify every day.",
+      avatar:
+        "https://avatars.githubusercontent.com/u/179849373?s=400&u=84886ad64dc9716b2d96c4e03a6e5478f7409dab&v=4",
+    },
+    {
+      name: "Kavi",
+      twitter: "@goelsahhab",
+      msg: "Thank you for trying Streakify! We built this to make your developer journey more fun and motivating. Happy coding!",
+      avatar: "https://avatars.githubusercontent.com/u/147709304?v=4",
+    },
+  ],
 };
