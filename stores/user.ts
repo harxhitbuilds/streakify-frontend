@@ -29,6 +29,8 @@ export const useUserStore = create<UserStore>((set, get) => ({
   user: null,
   hasGithubToken: false,
   loading: false,
+  updatingSettings: false,
+  updatingGithubToken: false,
   error: null,
   githubStatus: null,
 
@@ -41,7 +43,6 @@ export const useUserStore = create<UserStore>((set, get) => ({
         hasGithubToken: data.hasGithubToken,
         loading: false,
       });
-      toast.success("User data loaded successfully.");
     } catch (err: unknown) {
       set({
         error: getErrorMessage(err) || "Failed to fetch user",
@@ -52,15 +53,15 @@ export const useUserStore = create<UserStore>((set, get) => ({
   },
 
   updateSettings: async (settings) => {
-    set({ loading: true, error: null });
+    set({ updatingSettings: true, error: null });
     try {
       const { data } = await axios.patch("/api/user/settings", settings);
-      set({ user: data.user, loading: false });
+      set({ user: data.user, updatingSettings: false });
       toast.success("Settings updated successfully.");
     } catch (err: unknown) {
       set({
         error: getErrorMessage(err) || "Failed to update settings",
-        loading: false,
+        updatingSettings: false,
       });
       toast.error(getErrorMessage(err) || "Failed to update settings");
     }
@@ -88,7 +89,6 @@ export const useUserStore = create<UserStore>((set, get) => ({
     try {
       const { data } = await axios.get("/api/user/github-status");
       set({ githubStatus: data, loading: false });
-      toast.success("GitHub status fetched successfully.");
     } catch (err: unknown) {
       set({
         error: getErrorMessage(err) || "Failed to fetch GitHub status",
@@ -99,18 +99,18 @@ export const useUserStore = create<UserStore>((set, get) => ({
   },
 
   updateGithubToken: async (github_access_token) => {
-    set({ loading: true, error: null });
+    set({ updatingGithubToken: true, error: null });
     try {
       const { data } = await axios.post("/api/user/github-token", {
         github_access_token,
       });
       await get().fetchGithubStatus();
-      set({ loading: false });
+      set({ updatingGithubToken: false });
       toast.success("GitHub token updated successfully.");
     } catch (err: unknown) {
       set({
         error: getErrorMessage(err) || "Failed to update GitHub token",
-        loading: false,
+        updatingGithubToken: false,
       });
       toast.error(getErrorMessage(err) || "Failed to update GitHub token");
     }

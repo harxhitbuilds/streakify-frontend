@@ -22,12 +22,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         className="flex min-h-screen w-full pt-16"
         style={{ paddingTop: TOPBAR_HEIGHT }}
       >
-        <Sidebar>
+        <Sidebar className="">
           <SidebarContent>
             <LeftSidebar />
           </SidebarContent>
         </Sidebar>
-        <main className="bg-background flex-1 p-4 md:p-8">{children}</main>
+        <main className="bg-background flex-1">{children}</main>
       </div>
     </SidebarProvider>
   );
