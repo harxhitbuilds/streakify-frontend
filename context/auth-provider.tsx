@@ -1,13 +1,7 @@
 "use client";
 import { User } from "@supabase/supabase-js";
 
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, ReactNode, useContext, useEffect } from "react";
 
 import { supabase } from "@/configuration/supabase";
 import { useAuthStore } from "@/stores/auth";
@@ -20,19 +14,25 @@ const AuthContext = createContext<AuthContextType>({ user: null });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const setuser = useAuthStore((s) => s.setUser);
+  const setCheckingAuth = useAuthStore((s) => s.setCheckingAuth);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => setuser(data.user));
+    supabase.auth.getUser().then(({ data }) => {
+      setuser(data.user);
+      setCheckingAuth(false);
+    });
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setuser(session?.user ?? null);
       },
     );
     return () => listener?.subscription.unsubscribe();
-  }, []);
+  }, [setCheckingAuth, setuser]);
 
   return (
-    <AuthContext.Provider value={{ user: useAuthStore.getState().user }}>
+    <AuthContext.Provider
+      value={{ user: useAuthStore.getState().user as unknown as User }}
+    >
       {children}
     </AuthContext.Provider>
   );
