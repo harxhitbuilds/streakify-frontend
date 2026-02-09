@@ -44,8 +44,12 @@ export default function ContributionSection() {
         <div className="mt-4 flex items-center gap-4 pl-5 text-xs font-semibold">
           <span>
             Today:{" "}
-            <span className={true ? "text-green-500" : "text-red-500"}>
-              {todayStatus ? "Contributed" : "No Contribution"}
+            <span
+              className={
+                todayStatus?.hasContributed ? "text-green-500" : "text-red-500"
+              }
+            >
+              {todayStatus?.hasContributed ? "Contributed" : "No Contribution"}
             </span>
           </span>
         </div>

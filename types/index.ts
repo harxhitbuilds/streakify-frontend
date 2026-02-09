@@ -101,6 +101,7 @@ export type LinkCodeInfo = {
   code: string;
   expiresIn: string;
   instructions: string;
+  botUsername?: string;
 };
 
 export type WebhookInfo = {

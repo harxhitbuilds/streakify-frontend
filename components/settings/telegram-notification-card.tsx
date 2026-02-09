@@ -103,7 +103,8 @@ export default function TelegramNotificationsCard() {
             </div>
             <div className="space-y-1 text-sm">
               <p>
-                1. Open Telegram and search for <b>@streakify_bot</b>.
+                <strong>Step 1:</strong> Open Telegram and search for{" "}
+                <b>@{linkCodeInfo.botUsername || "streakify_bot"}</b>
               </p>
               <p>
                 2. Send this message:{" "}
